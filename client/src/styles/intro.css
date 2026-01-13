@@ -1,0 +1,147 @@
+/* Intro container */
+.intro {
+  position: relative;
+  z-index: 50;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 10s ease-out forwards;
+  padding: 1rem;
+}
+
+/* Title */
+.intro h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  margin: 0 0 var(--spacing-small);
+  color: var(--color-text-primary);
+  letter-spacing: 1px;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Subtitle */
+.intro h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 300;
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  opacity: 0.9;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Letter styling with glow effect */
+.letter {
+  display: inline-block;
+  --glow: 0;
+  color: #ffffff;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.85), 1px -1px 0 rgba(0, 0, 0, 0.85),
+    -1px 1px 0 rgba(0, 0, 0, 0.85), 1px 1px 0 rgba(0, 0, 0, 0.85),
+    0 0 calc(3px + 12px * var(--glow))
+      rgba(170, 200, 255, calc(0.4 * var(--glow))),
+    0 0 calc(8px + 25px * var(--glow))
+      rgba(190, 220, 255, calc(0.28 * var(--glow)));
+  filter: drop-shadow(
+    0 0 calc(4px * var(--glow)) rgba(180, 210, 255, calc(0.25 * var(--glow)))
+  );
+  transition: --glow 0.35s ease-out, text-shadow 0.45s ease-out,
+    filter 0.45s ease-out, color 0.4s ease-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeout {
+  position: relative;
+  z-index: 50;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 1;
+  animation: fadeOut 1s forwards;
+}
+
+.fadeout h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  margin: 0 0 var(--spacing-small);
+  color: var(--color-text-primary);
+  letter-spacing: 1px;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+.fadeout h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 300;
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  opacity: 0.9;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .intro {
+    padding: 0.5rem;
+  }
+
+  .intro h1 {
+    margin-bottom: 0.75rem;
+  }
+
+  .intro h2 {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro {
+    padding: 0.25rem;
+  }
+
+  .intro h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .intro h2 {
+    max-width: 95%;
+    line-height: 1.4;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .intro h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .intro h2 {
+    margin-top: 0.25rem;
+  }
+}

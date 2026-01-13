@@ -1,0 +1,173 @@
+/* Thought form container */
+.thought-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeInForm 0.5s ease-in;
+  padding: 1rem;
+}
+
+/* Thought display */
+.thought-display {
+  position: relative;
+  animation: fadeInForm 0.5s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cloud-thought-display {
+  width: clamp(300px, 50vw, 900px);
+  height: auto;
+  filter: drop-shadow(10px 10px 50px rgb(255, 255, 255)) brightness(1.1);
+  position: relative;
+}
+
+.thought-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-thought);
+  font-size: var(--font-size-thought);
+  font-weight: 500;
+  text-align: center;
+  padding: 20px;
+  max-width: calc(100% - 40px);
+  word-wrap: break-word;
+  z-index: 101;
+}
+
+/* Input */
+.input-thought {
+  background: white;
+  border-radius: 15px;
+  border: none;
+  padding: 16px;
+  margin: 32px 16px;
+  color: black;
+  font-size: 16px;
+  width: 100%;
+  max-width: 500px;
+  min-width: 250px;
+  outline: none;
+  box-shadow: 
+    0 4px 6px -5px hsl(0, 10%, 40%),
+    inset 0px 4px 6px -5px hsl(0, 0%, 2%);
+}
+
+/* Button */
+.button-thought {
+  padding: 12px 24px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  min-width: 150px;
+  background: var(--color-button);
+  border: 1px solid var(--color-button);
+  color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button-thought:hover {
+  background: rgb(147, 78, 39);
+  transform: scale(1.05);
+}
+
+.button-thought:active {
+  transform: scale(0.98);
+}
+
+/* Fade-in animation for form */
+@keyframes fadeInForm {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cloud-thought-display {
+    width: clamp(250px, 70vw, 600px);
+  }
+  
+  .input-thought {
+    padding: 14px;
+    margin: 24px 12px;
+    font-size: 14px;
+    min-width: 200px;
+  }
+  
+  .button-thought {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 120px;
+  }
+  
+  .thought-text {
+    padding: 15px;
+    font-size: clamp(14px, 3vw, 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .cloud-thought-display {
+    width: clamp(200px, 80vw, 400px);
+  }
+  
+  .input-thought {
+    padding: 12px;
+    margin: 20px 8px;
+    font-size: 14px;
+    min-width: 180px;
+  }
+  
+  .button-thought {
+    padding: 10px 18px;
+    font-size: 13px;
+    min-width: 100px;
+  }
+  
+  .thought-text {
+    padding: 12px;
+    font-size: clamp(12px, 3.5vw, 18px);
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .thought-form {
+    padding: 0.5rem;
+  }
+  
+  .cloud-thought-display {
+    width: clamp(200px, 50vw, 500px);
+  }
+  
+  .input-thought {
+    margin: 16px 8px;
+    padding: 10px;
+  }
+  
+  .button-thought {
+    padding: 8px 16px;
+    margin-bottom: 8px;
+  }
+}
+

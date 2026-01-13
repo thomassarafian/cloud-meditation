@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // --- File Output ---
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // --- Modern Node Environment ---
+    // Support natif ESM + résolution moderne
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    // Target moderne (Node 20+)
+    "target": "ES2022",
+    "lib": ["ES2023"],
+
+    // Types
+    "types": ["node"],
+
+    // --- Interop / import ergonomiques ---
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+
+    // --- Source maps ---
+    "sourceMap": true,
+
+    // --- Declarations ---
+    "declaration": true,
+    "declarationMap": true,
+
+    // --- Strictness ---
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // --- Safety / Style ---
+    "isolatedModules": true,
+    "skipLibCheck": true,
+
+    // Node ESM: obligatoire pour garder les extensions .js dans les imports
+    "noEmitOnError": false,
+    "allowImportingTsExtensions": false
+  },
+
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

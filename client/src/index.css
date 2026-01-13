@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #000b18 0%,
+    #00172d 20%,
+    #00264d 40%,
+    #02386e 60%,
+    #00498d 80%,
+    #0052a2 100%
+  );
+  background-attachment: fixed;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive adjustments for title-form */
+@media (max-width: 768px) {
+  .title-form {
+    margin: 32px;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-form {
+    margin: 24px;
+    font-size: 1.4rem;
+  }
+}

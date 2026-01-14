@@ -1,15 +1,15 @@
 # Cloud Meditation
 
-Une application web de méditation de 60 secondes avec une symbolique bouddhiste. L'utilisateur peut écrire une pensée qui le pèse et la laisser s'envoler avec les nuages.
+A 60-second meditation web app with Buddhist symbolism. Users can write down a thought that weighs on them and let it drift away with the clouds.
 
-## Fonctionnalités
+## Features
 
-- Animation de nuages flottants dans un ciel nocturne
-- Interface pour saisir une pensée
-- Visualisation de la pensée dans un nuage
-- Animations fluides avec GSAP et CSS
+- Animated floating clouds in a night sky
+- Interface to enter a thought
+- Thought visualization inside a cloud
+- Smooth animations with GSAP and CSS
 
-## Stack technique
+## Tech Stack
 
 ### Client
 - React 19
@@ -24,9 +24,9 @@ Une application web de méditation de 60 secondes avec une symbolique bouddhiste
 
 ## Installation
 
-### Prérequis
+### Prerequisites
 - Node.js >= 18
-- MongoDB (optionnel, pour le serveur)
+- MongoDB (optional, for server)
 
 ### Client
 
@@ -36,7 +36,7 @@ npm install
 npm run dev
 ```
 
-Le client sera accessible sur `http://localhost:5173`
+The client will be available at `http://localhost:5173`
 
 ### Server
 
@@ -46,30 +46,30 @@ npm install
 npm run dev
 ```
 
-## Scripts disponibles
+## Available Scripts
 
 ### Client
-- `npm run dev` - Démarre le serveur de développement
-- `npm run build` - Build pour la production
-- `npm run preview` - Prévisualise le build de production
-- `npm run lint` - Vérifie le code avec ESLint
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Lint code with ESLint
 
 ### Server
-- `npm run dev` - Démarre le serveur avec hot-reload
+- `npm run dev` - Start server with hot-reload
 - `npm run build` - Compile TypeScript
-- `npm run start` - Démarre le serveur compilé
+- `npm run start` - Start compiled server
 
-## Structure du projet
+## Project Structure
 
 ```
 cloud-meditation/
 ├── client/
-│   ├── public/          # Assets statiques (images, SVG)
+│   ├── public/          # Static assets (images, SVG)
 │   └── src/
-│       ├── components/  # Composants React
+│       ├── components/  # React components
 │       ├── hooks/       # Custom hooks
-│       ├── styles/      # Fichiers CSS
-│       └── config/      # Configuration (nuages, etc.)
+│       ├── styles/      # CSS files
+│       └── config/      # Configuration (clouds, etc.)
 └── server/
-    └── src/             # Code serveur Express
+    └── src/             # Express server code
 ```

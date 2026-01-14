@@ -1,32 +1,118 @@
-/* Thought form container */
-.thought-form {
+/* Fade container with dark overlay */
+.fade {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 90;
+  animation: fadeInOverlay 1.5s ease-out forwards;
+}
+
+/* Dark overlay - separate element for GSAP control */
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Thought form container */
+.thought-form {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 100;
-  animation: fadeInForm 0.5s ease-in;
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-/* Thought display */
+/* Meditation text area - top of screen */
+.meditation-text {
+  z-index: 102;
+  position: absolute;
+  top: 12vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.meditation-phrase {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  opacity: 0;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Form content wrapper */
+.form-content {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.form-content.appear {
+  animation: formAppear 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.form-content.disappear {
+  animation: formDisappear 1s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes formDisappear {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(50px) scale(0.98);
+  }
+}
+
+/* Thought display - centered */
 .thought-display {
   position: relative;
-  animation: fadeInForm 0.5s ease-in;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: cloudAppear 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
 }
 
 .cloud-thought-display {
-  width: clamp(300px, 50vw, 900px);
+  width: clamp(280px, 45vw, 600px);
   height: auto;
-  filter: drop-shadow(10px 10px 50px rgb(255, 255, 255)) brightness(1.1);
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4))
+    drop-shadow(0 0 60px rgba(255, 255, 255, 0.2)) brightness(1.1);
   position: relative;
 }
 
@@ -40,134 +126,202 @@
   font-weight: 500;
   text-align: center;
   padding: 20px;
-  max-width: calc(100% - 40px);
+  max-width: calc(100% - 60px);
   word-wrap: break-word;
   z-index: 101;
+  opacity: 0;
+  animation: textFadeIn 0.8s ease-out 0.3s forwards;
 }
 
-/* Input */
+/* Input - Glassmorphism style */
 .input-thought {
-  background: white;
-  border-radius: 15px;
-  border: none;
-  padding: 16px;
-  margin: 32px 16px;
-  color: black;
-  font-size: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 1rem 1.5rem;
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-weight: 400;
   width: 100%;
-  max-width: 500px;
-  min-width: 250px;
+  max-width: 400px;
+  min-width: 280px;
   outline: none;
-  box-shadow: 
-    0 4px 6px -5px hsl(0, 10%, 40%),
-    inset 0px 4px 6px -5px hsl(0, 0%, 2%);
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
-/* Button */
+.input-thought::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+.input-thought:focus {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Button - Soft cloud style */
 .button-thought {
-  padding: 12px 24px;
-  border-radius: 15px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 16px;
-  font-family: "Nunito", sans-serif;
-  font-weight: 300;
-  min-width: 150px;
-  background: var(--color-button);
-  border: 1px solid var(--color-button);
-  color: #fff;
-  overflow: hidden;
+  padding: 0.875rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-text-primary);
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .button-thought:hover {
-  background: rgb(147, 78, 39);
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
 }
 
 .button-thought:active {
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
-/* Fade-in animation for form */
-@keyframes fadeInForm {
+/* Animations */
+@keyframes fadeInOverlay {
   from {
     opacity: 0;
-    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
+}
+
+@keyframes cloudAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Message under form */
+.form-hint {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .form-content {
+    bottom: 10vh;
+  }
+
+  .meditation-text {
+    top: 8vh;
+  }
+
+  .meditation-phrase {
+    font-size: 1.2rem;
+  }
+
   .cloud-thought-display {
-    width: clamp(250px, 70vw, 600px);
+    width: clamp(240px, 60vw, 450px);
   }
-  
+
   .input-thought {
-    padding: 14px;
-    margin: 24px 12px;
-    font-size: 14px;
-    min-width: 200px;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    min-width: 240px;
   }
-  
+
   .button-thought {
-    padding: 10px 20px;
-    font-size: 14px;
-    min-width: 120px;
+    padding: 0.75rem 2rem;
+    font-size: 0.95rem;
+    min-width: 140px;
   }
-  
+
   .thought-text {
     padding: 15px;
-    font-size: clamp(14px, 3vw, 20px);
+    font-size: clamp(14px, 3vw, 18px);
   }
 }
 
 @media (max-width: 480px) {
+  .form-content {
+    bottom: 8vh;
+  }
+
+  .meditation-text {
+    top: 6vh;
+    padding: 0 1rem;
+  }
+
+  .meditation-phrase {
+    font-size: 1rem;
+  }
+
   .cloud-thought-display {
-    width: clamp(200px, 80vw, 400px);
+    width: clamp(200px, 70vw, 320px);
   }
-  
+
   .input-thought {
-    padding: 12px;
-    margin: 20px 8px;
-    font-size: 14px;
-    min-width: 180px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    min-width: 200px;
   }
-  
+
   .button-thought {
-    padding: 10px 18px;
-    font-size: 13px;
-    min-width: 100px;
+    padding: 0.7rem 1.75rem;
+    font-size: 0.9rem;
+    min-width: 120px;
   }
-  
+
   .thought-text {
     padding: 12px;
-    font-size: clamp(12px, 3.5vw, 18px);
+    font-size: clamp(12px, 3.5vw, 16px);
   }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {
-  .thought-form {
-    padding: 0.5rem;
+  .meditation-text {
+    top: 5vh;
   }
-  
+
+  .form-content {
+    bottom: 5vh;
+    gap: 1rem;
+  }
+
   .cloud-thought-display {
-    width: clamp(200px, 50vw, 500px);
+    width: clamp(150px, 30vw, 280px);
   }
-  
+
   .input-thought {
-    margin: 16px 8px;
-    padding: 10px;
+    padding: 0.6rem 1rem;
   }
-  
+
   .button-thought {
-    padding: 8px 16px;
-    margin-bottom: 8px;
+    padding: 0.6rem 1.5rem;
   }
 }
-

@@ -2,36 +2,35 @@
 :root {
   /* Sky & Perspective */
   --sky-perspective: 1000px;
-  
-  /* Sun */
-  --sun-size: clamp(150px, 25vw, 300px);
-  --sun-position-top: 5%;
-  --sun-position-right: 5%;
-  
+
+  /* Moon */
+  --moon-size: clamp(100px, 20vw, 200px);
+  --moon-position-top: 5%;
+  --moon-position-right: 5%;
+
   /* Typography */
   --font-size-h1: 2.8rem;
   --font-size-h2: 1.4rem;
   --font-size-thought: clamp(16px, 2.5vw, 24px);
-  
+
   /* Spacing */
   --spacing-small: 1rem;
   --spacing-medium: 2rem;
   --spacing-large: 4rem;
-  
+
   /* Colors */
   --color-text-primary: #f2f5f7;
   --color-text-secondary: #dce2e8;
   --color-text-thought: #333;
-  --color-button: rgb(167, 88, 44);
 }
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 769px) {
   :root {
     --sky-perspective: 800px;
-    --sun-size: clamp(120px, 22vw, 250px);
-    --sun-position-top: 4%;
-    --sun-position-right: 4%;
+    --moon-size: clamp(120px, 22vw, 250px);
+    --moon-position-top: 4%;
+    --moon-position-right: 4%;
     --font-size-h1: 2.4rem;
     --font-size-h2: 1.2rem;
   }
@@ -41,9 +40,9 @@
 @media (max-width: 768px) {
   :root {
     --sky-perspective: 600px;
-    --sun-size: clamp(80px, 20vw, 180px);
-    --sun-position-top: 3%;
-    --sun-position-right: 3%;
+    --moon-size: clamp(80px, 20vw, 180px);
+    --moon-position-top: 3%;
+    --moon-position-right: 3%;
     --font-size-h1: 2rem;
     --font-size-h2: 1.1rem;
   }
@@ -53,9 +52,9 @@
 @media (max-width: 480px) {
   :root {
     --sky-perspective: 400px;
-    --sun-size: clamp(60px, 18vw, 150px);
-    --sun-position-top: 2%;
-    --sun-position-right: 2%;
+    --moon-size: clamp(60px, 18vw, 150px);
+    --moon-position-top: 2%;
+    --moon-position-right: 2%;
     --font-size-h1: 1.6rem;
     --font-size-h2: 1rem;
   }
@@ -64,11 +63,10 @@
 /* Landscape orientation */
 @media (max-height: 500px) and (orientation: landscape) {
   :root {
-    --sun-size: clamp(80px, 15vh, 150px);
-    --sun-position-top: 2%;
-    --sun-position-right: 2%;
+    --moon-size: clamp(80px, 15vh, 150px);
+    --moon-position-top: 2%;
+    --moon-position-right: 2%;
     --font-size-h1: 1.8rem;
     --font-size-h2: 0.9rem;
   }
 }
-

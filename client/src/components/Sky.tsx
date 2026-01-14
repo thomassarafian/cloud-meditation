@@ -1,46 +1,59 @@
 import { useMemo } from "react";
-import { CLOUDS } from "../config/cloudConfig";
+import { CLOUDS, CLOUD_CONFIGS } from "../config/cloudConfig";
 import "../styles/sky.css";
 
-type CloudRefs = {
-  current: (HTMLImageElement | null)[];
-};
+// Generate random animation parameters for a cloud
+function getCloudAnimationStyle(
+  sizeClass: string,
+  index: number
+): React.CSSProperties {
+  const config = CLOUD_CONFIGS.find((c) => c.class === `cloud-${sizeClass}`);
+  if (!config) return {};
 
-interface SkyProps {
-  cloudRefs: CloudRefs;
+  const duration =
+    config.duration.min +
+    Math.random() * (config.duration.max - config.duration.min);
+  const startY =
+    config.yRange.min + Math.random() * (config.yRange.max - config.yRange.min);
+  const drift = (config.yRange.max - config.yRange.min) * 0.5;
+  const endY = startY + (Math.random() * drift - drift / 2);
+  const delay = index * config.delayMultiplier;
+
+  return {
+    "--duration": `${duration}s`,
+    "--delay": `${delay}s`,
+    "--start-y": `${startY}%`,
+    "--end-y": `${endY}%`,
+  } as React.CSSProperties;
 }
 
-export function Sky({ cloudRefs }: SkyProps) {
-  // Calculate base indices for each cloud group
-  const baseIndices = useMemo(() => {
-    const indices = [0];
-    for (let i = 1; i < CLOUDS.length; i++) {
-      let sum = 0;
-      for (let j = 0; j < i; j++) {
-        sum += CLOUDS[j].count;
-      }
-      indices[i] = sum;
-    }
-    return indices;
+export function Sky() {
+  // Generate cloud styles once on mount
+  const cloudStyles = useMemo(() => {
+    return CLOUDS.flatMap((cloudGroup) =>
+      Array.from({ length: cloudGroup.count }).map((_, index) =>
+        getCloudAnimationStyle(cloudGroup.size, index)
+      )
+    );
   }, []);
+
+  let cloudIndex = 0;
 
   return (
     <div className="sky">
-      <div className="stars"></div>
-      <img className="sun" src="/sun.svg" alt="Sun" />
+      <img className="stars-bg" src="/stars-bg-blue.svg" alt="Stars" />
+      <img className="moon" src="/moon.svg" alt="Moon" />
       <div className="clouds">
-        {CLOUDS.map((cloudGroup, groupIndex) =>
+        {CLOUDS.map((cloudGroup) =>
           Array.from({ length: cloudGroup.count }).map((_, index) => {
-            const cloudIndex = baseIndices[groupIndex] + index;
+            const currentIndex = cloudIndex++;
             return (
               <img
                 key={`${cloudGroup.size}-${index}`}
                 className={`cloud-${cloudGroup.size} cloud-floating`}
                 src={cloudGroup.images[index % cloudGroup.images.length]}
                 alt={`Cloud ${cloudGroup.size}-${index}`}
-                ref={(el) => {
-                  cloudRefs.current[cloudIndex] = el;
-                }}
+                style={cloudStyles[currentIndex]}
               />
             );
           })

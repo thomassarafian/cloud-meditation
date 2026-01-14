@@ -1,39 +1,22 @@
-import { SplitText } from "./SplitText";
 import "../styles/intro.css";
 
-type LetterRefs = {
-  current: (HTMLSpanElement | null)[];
-};
-
 interface IntroTextProps {
-  isCloudBehind: boolean;
-  letterRefs: LetterRefs;
+  onStart: () => void;
 }
 
-export function IntroText({ isCloudBehind, letterRefs }: IntroTextProps) {
-  const title = "Méditation 60 secondes";
-  const subtitle =
-    "Une meditation pour permettre de relativiser avec une symbolique bouddhiste.";
-
-  const titleStartIndex = 0;
-  const subtitleStartIndex = title.length;
-
+export function IntroText({ onStart }: IntroTextProps) {
   return (
-    <div className={`intro ${isCloudBehind ? "cloud-light" : ""}`}>
-      <h1>
-        <SplitText
-          text={title}
-          letterRefs={letterRefs}
-          startIndex={titleStartIndex}
-        />
-      </h1>
-      <h2>
-        <SplitText
-          text={subtitle}
-          letterRefs={letterRefs}
-          startIndex={subtitleStartIndex}
-        />
-      </h2>
+    <div className="intro">
+      <div className="intro-content">
+        <h1>Méditation 60 secondes</h1>
+        <h2>
+          Une meditation pour permettre de relativiser avec une symbolique
+          bouddhiste.
+        </h2>
+        <button className="intro-button" onClick={onStart}>
+          Commencer
+        </button>
+      </div>
     </div>
   );
 }

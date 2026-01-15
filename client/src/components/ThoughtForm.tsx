@@ -15,10 +15,22 @@ export function ThoughtForm({
     <div className="fade">
       <div className="fade-overlay"></div>
 
-      {/* Meditation phrases will appear here */}
       <div className="meditation-text">
         <p className="meditation-phrase"></p>
       </div>
+
+      <div className="final-message">
+        <h2>Merci d'avoir pris ce temps pour toi.</h2>
+        <p>J'espère que tu te sens un peu plus léger, un peu plus paisible.</p>
+        <br></br>
+        <p>❤️</p>
+        <p>Thomas Sarafian</p>
+        <p>
+          <em>thomassarafian@gmail.com</em>
+        </p>
+      </div>
+
+      {isSubmitted && <div className="meditation-progress" />}
 
       <form onSubmit={onSubmit} className="thought-form" id="thought-form">
         <div className="thought-display">
@@ -35,19 +47,27 @@ export function ThoughtForm({
             thought || isSubmitted ? "disappear" : "appear"
           }`}
         >
+          <label htmlFor="thought" className="visually-hidden">
+            Qu'est-ce qui vous pèse ?
+          </label>
           <input
             className="input-thought"
             name="thought"
             id="thought"
-            placeholder="Qu'est-ce qui vous pese ?"
+            placeholder="Qu'est-ce qui vous pèse ?"
             required
             autoComplete="off"
+            aria-describedby="form-hint"
           />
-          <button type="submit" className="button-thought">
-            Lacher prise
+          <button
+            type="submit"
+            className={`button-thought ${isSubmitted ? "loading" : ""}`}
+            disabled={isSubmitted}
+          >
+            {isSubmitted ? "..." : "Lâcher-prise"}
           </button>
-          <p className="form-hint">
-            Laissez votre pensee s'envoler avec les nuages
+          <p className="form-hint" id="form-hint">
+            Laissez votre pensée s'envoler
           </p>
         </div>
       </form>

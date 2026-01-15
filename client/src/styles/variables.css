@@ -1,30 +1,19 @@
-/* CSS Variables - Responsive Design */
 :root {
-  /* Sky & Perspective */
   --sky-perspective: 1000px;
-
-  /* Moon */
   --moon-size: clamp(100px, 20vw, 200px);
   --moon-position-top: 5%;
   --moon-position-right: 5%;
-
-  /* Typography */
   --font-size-h1: 2.8rem;
   --font-size-h2: 1.4rem;
   --font-size-thought: clamp(16px, 2.5vw, 24px);
-
-  /* Spacing */
   --spacing-small: 1rem;
   --spacing-medium: 2rem;
   --spacing-large: 4rem;
-
-  /* Colors */
   --color-text-primary: #f2f5f7;
   --color-text-secondary: #dce2e8;
   --color-text-thought: #333;
 }
 
-/* Tablet (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 769px) {
   :root {
     --sky-perspective: 800px;
@@ -36,7 +25,6 @@
   }
 }
 
-/* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
   :root {
     --sky-perspective: 600px;
@@ -48,7 +36,6 @@
   }
 }
 
-/* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
   :root {
     --sky-perspective: 400px;
@@ -60,7 +47,6 @@
   }
 }
 
-/* Landscape orientation */
 @media (max-height: 500px) and (orientation: landscape) {
   :root {
     --moon-size: clamp(80px, 15vh, 150px);

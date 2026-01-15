@@ -1,4 +1,3 @@
-// Cloud animation configuration
 export const CLOUD_CONFIGS = [
   {
     class: "cloud-xs",
@@ -26,7 +25,6 @@ export const CLOUD_CONFIGS = [
   },
 ];
 
-// Cloud data for rendering
 export const CLOUDS = [
   { size: "xs", count: 2, images: ["/C1.webp", "/C2.webp"] },
   { size: "s", count: 2, images: ["/C2.webp", "/C1.webp"] },

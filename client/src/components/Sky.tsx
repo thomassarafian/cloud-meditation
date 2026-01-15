@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { CLOUDS, CLOUD_CONFIGS } from "../config/cloudConfig";
 import "../styles/sky.css";
 
-// Generate random animation parameters for a cloud
 function getCloudAnimationStyle(
   sizeClass: string,
   index: number
@@ -28,7 +27,6 @@ function getCloudAnimationStyle(
 }
 
 export function Sky() {
-  // Generate cloud styles once on mount
   const cloudStyles = useMemo(() => {
     return CLOUDS.flatMap((cloudGroup) =>
       Array.from({ length: cloudGroup.count }).map((_, index) =>

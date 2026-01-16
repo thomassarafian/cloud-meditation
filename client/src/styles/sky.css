@@ -36,17 +36,11 @@
 @keyframes moon-rise {
   from {
     opacity: 0;
-    transform: translateZ(30px) translateY(30px) scale(0.9);
-    filter: grayscale(1) brightness(0.8) contrast(1.12)
-      drop-shadow(0 0 60px rgba(255, 255, 255, 0.1))
-      drop-shadow(0 0 120px rgba(255, 255, 255, 0.05));
+    transform: translateY(30px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateZ(0) translateY(0) scale(1);
-    filter: grayscale(1) brightness(1.01) contrast(1.12)
-      drop-shadow(0 0 120px rgba(255, 255, 255, 0.35))
-      drop-shadow(0 0 240px rgba(255, 255, 255, 0.18));
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -59,9 +53,9 @@
   z-index: 1;
   user-select: none;
   pointer-events: none;
-  will-change: transform, filter;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  filter: grayscale(1) brightness(1.01) contrast(1.12)
+    drop-shadow(0 0 60px rgba(255, 255, 255, 0.4));
+  -webkit-animation: moon-rise 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
   animation: moon-rise 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
   opacity: 0;
 }

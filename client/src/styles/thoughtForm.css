@@ -102,6 +102,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  width: 90%;
+  max-width: 500px;
 }
 
 .form-content.appear {
@@ -275,6 +277,8 @@
 @media (max-width: 768px) {
   .form-content {
     bottom: 10vh;
+    width: 85%;
+    max-width: 450px;
   }
 
   .meditation-text {
@@ -291,7 +295,7 @@
 
   .input-thought {
     padding: 0.875rem 1.25rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
     min-width: 240px;
   }
 
@@ -310,6 +314,8 @@
 @media (max-width: 480px) {
   .form-content {
     bottom: 8vh;
+    width: 92%;
+    max-width: 100%;
   }
 
   .meditation-text {
@@ -327,7 +333,7 @@
 
   .input-thought {
     padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     min-width: 200px;
   }
 

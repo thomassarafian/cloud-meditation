@@ -48,13 +48,13 @@ export function ThoughtForm({
           }`}
         >
           <label htmlFor="thought" className="visually-hidden">
-            Qu'est-ce qui vous pèse ?
+            Quelle pensée vous pèse ?
           </label>
           <input
             className="input-thought"
             name="thought"
             id="thought"
-            placeholder="Qu'est-ce qui vous pèse ?"
+            placeholder="Quelle pensée vous pèse ?"
             required
             autoComplete="off"
             aria-describedby="form-hint"
